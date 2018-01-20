@@ -84,7 +84,7 @@ def set_dimension(self, value, axis):
 
 #  -------------  COLLECTION PROPERTY -------------  #
 
-class ScaleFromLengthProperties(PropertyGroup):
+class LinkedScaleProperties(PropertyGroup):
     dim_x = FloatProperty(
             name="Dimension X",
             description="Absolute bounding box of the object",
@@ -130,8 +130,7 @@ class ScaleFromLengthProperties(PropertyGroup):
 
 #  ----------------  PANEL  ----------------  #
 
-class TestPanel(Panel):
-    bl_idname = "linked_scale"
+class VIEW3D_PT_linked_scale(Panel):
     bl_label = "Linked Scale"
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
@@ -157,7 +156,7 @@ def register():
     bpy.utils.register_module(__name__)
 
     bpy.types.WindowManager.sfp_props = PointerProperty(
-        type=ScaleFromLengthProperties)
+        type=LinkedScaleProperties)
 
 
 def unregister():
